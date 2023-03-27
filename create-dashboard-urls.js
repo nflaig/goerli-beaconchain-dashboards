@@ -22,4 +22,4 @@ const urls = createUrls(validatorIndexes);
 fs.writeFileSync("dashboard-urls.txt", urls.join("\n"));
 
 // Log the number of validator indexes and URLs written to the file
-console.log(`Wrote ${validatorIndexes.length} validator indexes to ${urls.length} URLs.`);
+console.log(`Wrote ${validatorIndexes.length} validator indexes to ${urls.length} URLs`);

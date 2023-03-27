@@ -6,11 +6,7 @@ Create [beaconcha.in dashboards](https://goerli.beaconcha.in/dashboard) based on
 node index.js deposit-data.txt
 ```
 
-and to open all dashboards in chrome
-
-```sh
-node open-dashboards.js 
-```
+This will write all URLs to `dashboard-urls.txt`.
 
 **How it works**
 
