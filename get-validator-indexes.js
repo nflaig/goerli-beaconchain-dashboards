@@ -5,7 +5,7 @@ import axios from "axios";
 const filename = process.argv[2] || "deposit-data.txt";
 
 // Read the public keys from the text file
-const jsonData = fs
+const depositData = fs
   .readFileSync(filename, "utf-8")
   .trim() // Remove any leading/trailing white space
   .split("\n") // Split the text file into an array of lines
@@ -26,7 +26,7 @@ async function sendRequest(pubkeys) {
 
 // Define the main function to execute
 async function main() {
-  const pubkeys = jsonData.map((entry) => entry.pubkey);
+  const pubkeys = depositData.map((entry) => entry.pubkey);
   const validatorIndexes = [];
   for (let i = 0; i < pubkeys.length; i += 80) {
     const pubkeysSubset = pubkeys.slice(i, i + 80);
@@ -36,6 +36,8 @@ async function main() {
     await new Promise((resolve) => setTimeout(resolve, 2000));
   }
   console.log(validatorIndexes);
+  console.log(`Fetched a total of ${validatorIndexes.length} validator indexes`);
+  console.log(`${pubkeys.length - validatorIndexes.length} validators not found on beacon chain`);
   fs.writeFileSync("validator-indexes.json", JSON.stringify(validatorIndexes));
 }
 
