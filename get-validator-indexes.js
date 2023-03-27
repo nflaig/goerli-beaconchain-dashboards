@@ -26,6 +26,7 @@ async function sendRequest(pubkeys) {
 
 // Define the main function to execute
 async function main() {
+  console.log("Fetching validator indexes...");
   const pubkeys = depositData.map((entry) => entry.pubkey);
   const validatorIndexes = [];
   for (let i = 0; i < pubkeys.length; i += 80) {
